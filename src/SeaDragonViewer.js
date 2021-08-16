@@ -2,8 +2,10 @@ import OpenSeaDragon from "openseadragon";
 import { useEffect, useState } from "react";
 import ZoomInIcon from '@material-ui/icons/ZoomIn';
 import ZoomOutIcon from '@material-ui/icons/ZoomOut';
+import FullScreenIcon from '@material-ui/icons/Fullscreen';
 import { IconButton, Tooltip} from '@material-ui/core';
 import './App.css';
+import YoutubeSearchedForIcon from "@material-ui/icons/YoutubeSearchedFor";
 
 const sdConf = {
   id: "openSeaDragon",
@@ -17,7 +19,11 @@ const sdConf = {
   zoomPerScroll: 2,
   zoomInButton: "zoom-in",
   zoomOutButton: "zoom-out",
+  homeButton: "home",
+  fullPageButton: "fullscreen",
 }
+
+const toolTipDelay = 700;
 
 function SeaDragonViewer(props) {
   const [viewer, setViewer] = useState( null);
@@ -45,14 +51,24 @@ function SeaDragonViewer(props) {
     "boxShadow":"0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.20)"
   }} />
   <div className="control_cont">
-  <Tooltip title="Zoom in" enterDelay={700}>
+  <Tooltip title="Zoom in" enterDelay={toolTipDelay}>
     <IconButton color="primary" id="zoom-in">
       <ZoomInIcon fontSize="large" />
     </IconButton>
   </Tooltip>
-  <Tooltip title="Zoom out" enterDelay={700}>
+  <Tooltip title="Zoom out" enterDelay={toolTipDelay}>
     <IconButton color="primary" id="zoom-out">
       <ZoomOutIcon fontSize="large" />
+    </IconButton>
+  </Tooltip>
+  <Tooltip title="Reset" enterDelay={toolTipDelay}>
+    <IconButton color="primary" id="home">
+      <YoutubeSearchedForIcon fontSize="large" />
+    </IconButton>
+  </Tooltip>
+  <Tooltip title="Fullscreen" enterDelay={toolTipDelay}>
+    <IconButton color="primary" id="fullscreen">
+      <FullScreenIcon fontSize="large" />
     </IconButton>
   </Tooltip>
   </div>
