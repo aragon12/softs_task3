@@ -19,14 +19,14 @@ const sdConf = {
   zoomOutButton: "zoom-out",
 }
 
-const SeaDragonViewer = ({slide}) => {
+function SeaDragonViewer(props) {
   const [viewer, setViewer] = useState( null);
 
   useEffect(() => {
-    if (slide && viewer) {
-      viewer.open(slide.source);
+    if (props.slide && viewer) {
+      viewer.open(props.slide.source);
     }
-  }, [slide]);
+  }, [props.slide]);
 
   useEffect(() => {
     viewer && viewer.destroy();
@@ -60,4 +60,4 @@ const SeaDragonViewer = ({slide}) => {
   );
 };
 
-export {SeaDragonViewer};
+export default SeaDragonViewer;
